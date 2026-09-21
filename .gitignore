@@ -5,3 +5,6 @@ config.json
 opencode.json
 prompt.txt
 system_prompt.txt
+venv/
+history.json
+output.txt
