@@ -1,0 +1,35 @@
+Ubuntu 26.04 ends a 40-year old sudo tradition
+by Joey Sneddon
+· Updated 1 March 2026 ·
+67 Comments
+
+Name: Password feedback in sudo.
+
+Age: New, but its absence is over 40 years old.
+
+Appearance: ********.
+
+What’s this about? When you run a command in Ubuntu 26.04 LTS using sudo and enter your password, you now see asterisks appear as you type. Previously you’d see nothing but a gaping black void reflecting your own uncertainty back at you.
+
+Ubuntu uses a new sudo, right? Yes. Ubuntu switched to sudo-rs, a rewrite of the decades-old C version in Rust, back in 25.10. You still run sudo as the command, which made that switch invisible to most. The asterisks are new in 26.04 specifically. Canonical cherry-picked a patch from upstream sudo-rs to use the password feedback by default. It won’t affect legacy sudo (sudo-ws).
+
+I always thought sudo should show those asterisks… You and a lot of other people. Linux Mint decided to enable visual feedback for sudo by default. No indication of typing often confuses newcomers who think they’re doing something wrong.
+Password feedback showing in sudo on Ubuntu 26.04
+
+Why did sudo not show feedback? Security. Visual feedback is hidden so a hypothetical shoulder-snoop can’t count the characters you type and use the length to narrow down your password and make an educated guess at it and gain root access.
+
+So why start showing asterisks? The sudo-rs developers think the security benefit in hiding feedback from said hypothetical shoulder-snoop is, bluntly, “infinitesimal”. It confuses more people than it helps. Besides which, most people’s sudo password is also their login password. That’s visible to anyone watching them type at a the login screen (you can also ‘hear’ typing to count keys too). Ubuntu’s developers also agree.
+
+I’m guessing people aren’t happy. Someone has filed a bug (caps original) to ask: “WHY?! This goes against DECADES of NOT ECHOING THE LENGTH OF THE PASSWORD TO SHOULDER SURFERS” – Ubuntu marked it “Won’t Fix”.
+
+Fair enough. Upstream sudo-rs is equally unmoved. Their reasoning being that outside of sudo, few password fields on Linux hide feedback by default. This UX decision only sounds radical is because of how long we’ve treated sudo’s vacant feedback as normal – it’s been like that since the original sudo was created in the 1980s, making it more tradition for tradition’s sake.
+
+What’s the deadline on needing a strong opinion about this change? April 23, 2026.
+
+I’ll jot that down. Champ.
+
+Can I get the old behaviour back? Add Defaults !pwfeedback to /etc/sudoers using sudo visudo. Thereafter, your password will once again be greeted by stunned silence1, as sudo intended.
+
+Do say: “Finally, confirmation that my keyboard is actually working.”
+
+Don’t say: “They’ll prise zero sudo feedback from my cold, accurately-typed hands.”

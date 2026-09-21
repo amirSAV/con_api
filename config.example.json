@@ -1,0 +1,17 @@
+{
+  "api_url": "http://127.0.0.1:8080/v1/chat/completions",
+  "api_key": "",
+  "model": "gemma-4-E4B_q4_0-it",
+  "system_prompt": "",
+  "system_prompt_file": "system_prompt.txt",
+  "prompt": "",
+  "prompt_file": "prompt.txt",
+  "enable_thinking": true,
+  "history_file": "history.json",
+  "output_file": "output.txt",
+  "live_display": true,
+  "stream": true,
+  "temperature": 0.7,
+  "max_tokens": 0,
+  "timeout": 60
+}
